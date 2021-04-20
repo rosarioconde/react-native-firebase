@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Button, TextInput, ScrollView, StyleSheet } from "react-native";
 import firebase from "../database/firebase";
 
-const CreateUser = () => {
+const CreateUser = (props) => {
     const [state, setState] = useState({
         name: '',
         email: '',
@@ -15,12 +15,16 @@ const CreateUser = () => {
         if (state.name === '') {
             alert("ingrese el name")
         } else {
-            await firebase.db.collection('users').add({
-                name: state.name,
-                email: state.email,
-                cel: state.cel
-            })
-            alert("guardado")
+            try {
+                await firebase.db.collection('users').add({
+                    name: state.name,
+                    email: state.email,
+                    cel: state.cel
+                })
+                props.navigation.navigate('UserList');
+            } catch (error) {
+                console.log(error)
+            }
         }
 
     }
