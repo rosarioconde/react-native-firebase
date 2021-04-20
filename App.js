@@ -15,8 +15,8 @@ import  UserDetails  from './screen/UserDetails';
 function MyStack() {
   return (
     <Stack.Navigator>      
-      <Stack.Screen name="CreateUser" component={CreateUser} />
       <Stack.Screen name="UserList" component={UserList} />
+      <Stack.Screen name="CreateUser" component={CreateUser} />      
       <Stack.Screen name="UserDetails" component={UserDetails} />
     </Stack.Navigator>
   )
